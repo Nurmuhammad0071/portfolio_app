@@ -4,9 +4,15 @@
 {% block title %}Men haqimda {% endblock %}
 {% block content %}
     <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+    <section id="hero" class="d-flex flex-column justify-content-center align-items-center" style="background: url('{{ info.image.url }}') top center;background-repeat: no-repeat;background-size: cover;background-position: center;
+            ">
         <div class="hero-container" data-aos="fade-in">
-            <h1>{{ info.first_name }} </h1>
+            {% if not info.first_name %}
+                <h1>NoName</h1>
+
+            {% else %}
+                <h1>{{ info.first_name }} </h1>
+            {% endif %}
             <p>I'm <span class="typed" data-typed-items="Designer, Developer, Freelancer, Photographer"></span></p>
         </div>
     </section><!-- End Hero -->
@@ -28,7 +34,7 @@
 
                 <div class="row">
                     <div class="col-lg-4" data-aos="fade-right">
-                        <img src="{% static 'assets/img/profile-img.jpg' %}" class="img-fluid" alt="">
+                        <img src="{{ info.image.url }}" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
                         <h3>UI/UX Designer &amp; Web Developer.</h3>
@@ -41,13 +47,32 @@
                             <div class="col-lg-6">
                                 <ul>
                                     <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong>
-                                        <span>{{ info.birthday }}</span></li>
+                                        {% if not info.birthday %}
+                                            <span>NoBirthday</span>
+                                        {% else %}
+                                            <span>{{ info.birthday }}</span></li>
+                                        {% endif %}
                                     <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong>
-                                        <span><a href="{{ info.website }}">{{ info.website|slice:"8:" }}</a></span></li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong>
-                                        <span>{{ info.phone }}</span></li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>City:</strong>
-                                        <span>{{ info.city }}</span></li>
+                                        {% if not info.website %}
+                                            <span>NoURl</span>
+                                        {% else %}
+                                            <span><a href="{{ info.website }}">{{ info.website|slice:"8:" }}</a></span>
+                                            </li>
+                                        {% endif %}
+                                    {% if not info.phone %}
+                                        <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong>
+                                            <span>NO POHONE NUMBER</span></li>
+                                    {% else %}
+                                        <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong>
+                                            <span>{{ info.phone }}</span></li>
+                                    {% endif %}
+                                    {% if not info.city %}
+                                        <li><i class="bi bi-chevron-right"></i> <strong>City:</strong>
+                                            <span>No city</span></li>
+                                    {% else %}
+                                        <li><i class="bi bi-chevron-right"></i> <strong>City:</strong>
+                                            <span>info.city</span></li>
+                                    {% endif %}
                                 </ul>
                             </div>
                             <div class="col-lg-6">
@@ -159,17 +184,24 @@
 
                 <div class="row skills-content">
                     <div class="col-lg-6" data-aos="fade-up">
-                        {% for skill in skill %}
+                        {% if not skill %}
+                            NOSUCHINFO
+                        {% else %}
+                            {% for skill in skill %}
 
-                            <div class="progress">
-                                <span class="skill">{{ skill.name }} <i class="val">{{ skill.knowledge }}%</i></span>
-                                <div class="progress-bar-wrap">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="{{ skill.knowledge }}"
-                                         aria-valuemin="0"
-                                         aria-valuemax="100"></div>
+                                <div class="progress">
+                                    <span class="skill">{{ skill.name }} <i
+                                            class="val">{{ skill.knowledge }}%</i></span>
+                                    <div class="progress-bar-wrap">
+                                        <div class="progress-bar" role="progressbar"
+                                             aria-valuenow="{{ skill.knowledge }}"
+                                             aria-valuemin="0"
+                                             aria-valuemax="100"></div>
+                                    </div>
                                 </div>
-                            </div>
-                        {% endfor %}
+                            {% endfor %}
+                        {% endif %}
+
                     </div>
 
                 </div>
@@ -305,7 +337,7 @@
                                 <div class="testimonial-item" data-aos="fade-up">
                                     <p>
                                         <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                      {{ work.text }}
+                                        {{ work.text }}
                                         <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                     </p>
                                     <img src="{{ work.image.url }}"
@@ -350,7 +382,7 @@
                             <div class="email">
                                 <i class="bi bi-envelope"></i>
                                 <h4>Email:</h4>
-                                <p>{{  info.email}}</p>
+                                <p>{{ info.email }}</p>
                             </div>
 
                             <div class="phone">
@@ -367,7 +399,7 @@
                     </div>
 
                     <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-                        <form  method="POST" class="php-email-form" >
+                        <form method="POST" class="php-email-form">
                             {% csrf_token %}
                             <div class="row">
                                 <div class="form-group col-md-6">
