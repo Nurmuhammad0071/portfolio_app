@@ -81,15 +81,7 @@ class Category(BaseModel):
         return self.name
 
 
-class PortfolioImage(BaseModel):
-    image = models.ImageField(upload_to='portfolio')
-
-    def __str__(self):
-        return "Image"
-
-
 class Portfolio(BaseModel):
-    image = models.ManyToManyField(PortfolioImage, blank=True)
     name = models.CharField(max_length=255)
     categories = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     client = models.CharField(max_length=255)
@@ -100,6 +92,14 @@ class Portfolio(BaseModel):
 
     def __str__(self):
         return self.name
+
+
+class PortfolioImage(BaseModel):
+    image = models.ImageField(upload_to='portfolio')
+    portfolio_id = models.ForeignKey(Portfolio, on_delete=models.CASCADE, related_name='related_images')
+
+    def __str__(self):
+        return "Image"
 
 
 class Testimonial(BaseModel):
