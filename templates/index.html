@@ -4,8 +4,9 @@
 {% block title %}Men haqimda {% endblock %}
 {% block content %}
     <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex flex-column justify-content-center align-items-center" style="background: url('{{ info.image.url }}') top center;background-repeat: no-repeat;background-size: cover;background-position: center;
-            ">
+    <section id="hero" class="d-flex flex-column justify-content-center align-items-center"
+             style="background: url('{{ info.image.url }}') top center;background-repeat: no-repeat;background-size: cover;background-position: center;
+                     ">
         <div class="hero-container" data-aos="fade-in">
             {% if not info.first_name %}
                 <h1>NoName</h1>
@@ -13,7 +14,7 @@
             {% else %}
                 <h1>{{ info.first_name }} </h1>
             {% endif %}
-            <p>I'm <span class="typed" data-typed-items="Designer, Developer, Freelancer, Photographer"></span></p>
+            <p>I'm <span class="typed" data-typed-items="Python Developer,PHP Developer, Freelancer"></span></p>
         </div>
     </section><!-- End Hero -->
 
@@ -24,12 +25,10 @@
             <div class="container">
 
                 <div class="section-title">
-                    <h2>About</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
-                        sint
-                        consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.
-                        Quia
-                        fugiat sit in iste officiis commodi quidem hic quas.</p>
+                    <h2>Haqimda </h2>
+                    <p>
+                        Men haqimda ma'lumotlar
+                    </p>
                 </div>
 
                 <div class="row">
@@ -37,12 +36,8 @@
                         <img src="{{ info.image.url }}" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-                        <h3>UI/UX Designer &amp; Web Developer.</h3>
-                        <p class="fst-italic">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore
-                            magna aliqua.
-                        </p>
+                        <h3>PHP &amp; Python Developer &amp; Web Developer.</h3>
+
                         <div class="row">
                             <div class="col-lg-6">
                                 <ul>
@@ -91,14 +86,7 @@
                             </div>
                         </div>
                         <p>
-                            Officiis eligendi itaque labore et dolorum mollitia officiis optio vero. Quisquam sunt
-                            adipisci
-                            omnis et ut. Nulla accusantium dolor incidunt officia tempore. Et eius omnis.
-                            Cupiditate ut dicta maxime officiis quidem quia. Sed et consectetur qui quia repellendus
-                            itaque
-                            neque. Aliquid amet quidem ut quaerat cupiditate. Ab et eum qui repellendus omnis culpa
-                            magni
-                            laudantium dolores.
+                            {{ info.text }}
                         </p>
                     </div>
                 </div>
@@ -111,12 +99,8 @@
             <div class="container">
 
                 <div class="section-title">
-                    <h2>Facts</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
-                        sint
-                        consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.
-                        Quia
-                        fugiat sit in iste officiis commodi quidem hic quas.</p>
+                    <h2>Factlar</h2>
+                    <p>Qilinga ishlar bo'yicha to'laqonlik malumotlar </p>
                 </div>
 
                 <div class="row no-gutters">
@@ -127,7 +111,7 @@
                             <span data-purecounter-start="0" data-purecounter-end="{{ site.happy_clients }}"
                                   data-purecounter-duration="1"
                                   class="purecounter"></span>
-                            <p><strong>Happy Clients</strong> consequuntur quae</p>
+                            <p><strong>Mamnun mijozlar</strong> soni</p>
                         </div>
                     </div>
 
@@ -138,7 +122,7 @@
                             <span data-purecounter-start="0" data-purecounter-end="{{ site.projects }}"
                                   data-purecounter-duration="1"
                                   class="purecounter"></span>
-                            <p><strong>Projects</strong> adipisci atque cum quia aut</p>
+                            <p><strong>Proyektlar</strong>soni</p>
                         </div>
                     </div>
 
@@ -149,7 +133,7 @@
                             <span data-purecounter-start="0" data-purecounter-end="{{ site.support }}"
                                   data-purecounter-duration="1"
                                   class="purecounter"></span>
-                            <p><strong>Hours Of Support</strong> aut commodi quaerat</p>
+                            <p><strong>Tavsiyalar</strong> soni</p>
                         </div>
                     </div>
 
@@ -160,7 +144,7 @@
                             <span data-purecounter-start="0" data-purecounter-end="{{ site.workers }}"
                                   data-purecounter-duration="1"
                                   class="purecounter"></span>
-                            <p><strong>Hard Workers</strong> rerum asperiores dolor</p>
+                            <p><strong>Hodimlarimiz</strong> soni</p>
                         </div>
                     </div>
 
@@ -174,20 +158,18 @@
             <div class="container">
 
                 <div class="section-title">
-                    <h2>Skills</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
-                        sint
-                        consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.
-                        Quia
-                        fugiat sit in iste officiis commodi quidem hic quas.</p>
+                    <h2>Ko'nikmalar</h2>
+                    <p>Yillar davomida ortirilgan ko'nikmalar</p>
                 </div>
 
                 <div class="row skills-content">
-                    <div class="col-lg-6" data-aos="fade-up">
-                        {% if not skill %}
-                            NOSUCHINFO
-                        {% else %}
-                            {% for skill in skill %}
+                    {% if not skill %}
+                        NOSUCHINFO
+                    {% else %}
+
+                        {% for skill in skill %}
+                            <div class="col-lg-6" data-aos="fade-up">
+                                <!-- Content specific to every third iteration -->
 
                                 <div class="progress">
                                     <span class="skill">{{ skill.name }} <i
@@ -199,12 +181,13 @@
                                              aria-valuemax="100"></div>
                                     </div>
                                 </div>
-                            {% endfor %}
-                        {% endif %}
-
-                    </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
 
                 </div>
+
+            </div>
 
             </div>
         </section><!-- End Skills Section -->
@@ -215,11 +198,7 @@
 
                 <div class="section-title">
                     <h2>Resume</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
-                        sint
-                        consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.
-                        Quia
-                        fugiat sit in iste officiis commodi quidem hic quas.</p>
+                    <p>O'zim haqimda to'liq malumot</p>
                 </div>
 
                 <div class="row" style="display: flex">
@@ -276,11 +255,7 @@
 
                 <div class="section-title">
                     <h2>Portfolio</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
-                        sint
-                        consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.
-                        Quia
-                        fugiat sit in iste officiis commodi quidem hic quas.</p>
+                    <p>Qilingan ishlar</p>
                 </div>
 
                 <div class="row" data-aos="fade-up">
@@ -322,7 +297,7 @@
             <div class="container">
 
                 <div class="section-title">
-                    <h2>Testimonials</h2>
+                    <h2>Mijozlar fikri</h2>
                     <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
                         sint
                         consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.
@@ -361,12 +336,8 @@
             <div class="container">
 
                 <div class="section-title">
-                    <h2>Contact</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
-                        sint
-                        consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.
-                        Quia
-                        fugiat sit in iste officiis commodi quidem hic quas.</p>
+                    <h2>Kontakt</h2>
+                    <p>Biz bog'lanish uchun</p>
                 </div>
 
                 <div class="row" data-aos="fade-in">
@@ -391,6 +362,7 @@
                                 <p>{{ info.phone }}</p>
                             </div>
 
+
                             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
                                     frameborder="0" style="border:0; width: 100%; height: 290px;"
                                     allowfullscreen></iframe>
@@ -399,7 +371,7 @@
                     </div>
 
                     <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-                        <form method="POST" class="php-email-form">
+                        <form method="POST" class="php-email-form" action="{% url 'home' %}">
                             {% csrf_token %}
                             <div class="row">
                                 <div class="form-group col-md-6">
