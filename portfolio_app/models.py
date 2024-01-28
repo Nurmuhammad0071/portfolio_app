@@ -113,7 +113,7 @@ class Testimonial(BaseModel):
 
 
 class Contact(BaseModel):
-    your_name = models.ImageField(upload_to='portfolio')
+    your_name = models.CharField(max_length=255)
     your_email = models.EmailField(max_length=255)
     subject = models.CharField(max_length=255)
     message = models.CharField(max_length=255)

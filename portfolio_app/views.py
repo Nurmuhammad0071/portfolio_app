@@ -5,25 +5,44 @@ from portfolio_app.models import MyInfo, Site, Skill, Summary, Experience, Categ
 
 
 # Create your views here.
+from django.http import HttpResponseNotAllowed
+
 class IndexPage(View):
+    template_name = 'index.html'
+
     def get(self, request):
-        form = CommentForm(request.POST)
-        if request.method == 'POST' and form.is_valid():
-            form.save()
-            return redirect('index.html')
+        form = CommentForm()
+        info = MyInfo.objects.filter(status=1).first()
+        site = Site.objects.filter(status=1).first()
+        skill = Skill.objects.filter(status=1)
+        summary = Summary.objects.filter(status=1)
+        experience = Experience.objects.filter(status=1)
+        category = Category.objects.filter(status=1)
+        portfolio = Portfolio.objects.filter(status=1)
+        testimonial = Testimonial.objects.filter(status=1)
 
         context = {
             'form': form,
-            'info': MyInfo.objects.filter(status=1).first(),
-            'site': Site.objects.filter(status=1).first(),
-            'skill': Skill.objects.filter(status=1),
-            'summary': Summary.objects.filter(status=1),
-            'experience': Experience.objects.filter(status=1),
-            'category': Category.objects.filter(status=1),
-            'portfolio': Portfolio.objects.filter(status=1),
-            'testimonial': Testimonial.objects.filter(status=1)
+            'info': info,
+            'site': site,
+            'skill': skill,
+            'summary': summary,
+            'experience': experience,
+            'category': category,
+            'portfolio': portfolio,
+            'testimonial': testimonial
         }
-        return render(request, 'index.html', context)
+
+        return render(request, self.template_name, context)
+
+    def post(self, request):
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')  # Define the URL pattern for message_list
+        else:
+            # Handle invalid form data
+            return HttpResponseNotAllowed(["GET"])  # You may want to customize the response for invalid data
 
 
 def portfolio(request, id):
